@@ -1,3 +1,7 @@
+---
+title: CQL ~ Cassandra ~ Cody's Scratchpad
+---
+
 # CQL
 
 ## Using Keyspaces
