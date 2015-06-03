@@ -57,3 +57,13 @@ CREATE TABLE User (
   display_name VARCHAR PRIMARY KEY
 );
 ```
+
+#### Inserting Data
+```
+INSERT INTO User (first_name, last_name, display_name) VALUES ('Jonathan', 'Ellis', 'CassandraChairman;);
+```
+You don't have to put data into all fields.
+```
+INSERT INTO User (first_name, display_name) VALUES ('Billy', 'DataStax CEO');
+```
+For the above statement, if you were to get that row from cassandra, it will display null for last_name. That's just how CQL decides to interpret the fact that there is no value there. Cassandra does not store null.
