@@ -94,3 +94,23 @@ Column data can have an optional expiration date
   - You can't directly change TTL for a column
     - You can, however, reinsert the data with a new TTL
     - Read the old data, then insert/upsert with a new TTL
+
+#### SELECT - Querying for Data
+```
+SELECT select_expression
+  FROM keyspace_name.table_name
+  WHERE relation AND relation ...
+  ORDER BY ( clustering_column (ASC | DESC) ... )
+  LIMIT n
+  ALLOW FILTERING;
+```
+- The WHERE clause can only be an equality (equals or IN)
+- Can't query on non-primary-key columns that aren't indexed
+
+#### CQL Data Types
+- Numbers: int, bigint, float, double, decimal(variable-precision decimal), varint (variable-precision integer)
+- Text: text, ascii, varchar (text and varchar are synonyms)
+- Time: timestamp, timeuuid
+- Collections: list, map, set
+- Others: uuid, boolean, blob, counter, inet
+
