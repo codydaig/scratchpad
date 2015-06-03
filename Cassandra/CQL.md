@@ -115,3 +115,28 @@ SELECT select_expression
 - Collections: list, map, set
 - Others: uuid, boolean, blob, counter, inet
 
+#### Deleting Data
+###### Syntax:
+```
+DELETE column_name, ... | ( column_name term )
+  FROM keyspace_name.table_name
+  USING TIMESTAMP integer
+  WHERE row_specification
+  ( IF ( EXISTS | ( condition( AND condition ) ... ) ) );
+```
+
+###### Deleting an Entire Row
+```
+DELETE FROM user WHERE display_name = 'DataStax MVP';
+```
+
+###### Deleting a Column from a Row
+```
+DELETE first_name FROM user WHERE display_name = 'President 44';
+```
+
+###### Not Really Deleted?
+In distributed systems, replicas may recieve delete requests at different times. So depending on the consistency level and replication factor, some replicas may have a delete, while others do not. Also, data is stored in immutable SSTables, and a given partition key may have values that span multiple SSTables, so an SSTable may contain data that has been deleted. 
+
+By initiating a delete, cassandra actually indicates that a delete occured, and when it happened. Then it uses the standard write mechanism to propagata the delete to other replicas. 
+
