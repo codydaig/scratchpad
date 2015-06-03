@@ -5,12 +5,13 @@ CQL
 
 #### Creating a Keyspace
 ```
-CREATE KEYSPACE example;
+CREATE KEYSPACE example WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 ```
+You must define the replication strategy and factor. For single node clusters, the above will work just fine.
 
 #### Create a Keyspace (only if it doesn't already exist)
 ```
-CREATE KEYSPACE IF NOT EXISTS example;
+CREATE KEYSPACE IF NOT EXISTS example WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 ```
 
 #### Using a KeySpace
