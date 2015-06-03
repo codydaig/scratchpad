@@ -4,7 +4,7 @@ CQL
 ## Using Keyspaces
 
 Creating a Keyspace
-```cql
+```sql
 CREATE KEYSPACE example;
 ```
 
