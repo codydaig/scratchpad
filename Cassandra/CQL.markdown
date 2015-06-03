@@ -7,7 +7,7 @@ title: CQL ~ Cassandra ~ Cody's Scratchpad
 ## Using Keyspaces
 
 Creating a Keyspace
-```cql
+```
 CREATE KEYSPACE example;
 ```
 
