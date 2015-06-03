@@ -78,3 +78,19 @@ INSERT INTO keyspace_name.table_name
 ```
 
 ##### INSERT IS ALWAYS UPSERT!!
+An insert with an existing primary key becomes an update
+  - Cassandra will just write the new column value(s) provided
+  - Each column insered will supersede any older values
+  - For concurrent writes with the same primary key, the last write wins
+  - Note that an insert doesn't necessarily have to insert all columns
+
+#### Expiring Columns / TTL
+Column data can have an optional expiration date
+  - Time to Live (TTL)
+  - Useful for automatically managing data that has a "shelf life"
+  - Specify TTL when inserting a column
+    - Specify the time in seconds
+    - after the time has expired, columns will be marked as deleted
+  - You can't directly change TTL for a column
+    - You can, however, reinsert the data with a new TTL
+    - Read the old data, then insert/upsert with a new TTL
