@@ -75,4 +75,6 @@ INSERT INTO keyspace_name.table_name
   VALUES ( value, value, ...) 
   IF NOT EXISTS
   USING option AND option;
-  ```
+```
+
+##### INSERT IS ALWAYS UPSERT!!
